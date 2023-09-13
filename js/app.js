@@ -90,10 +90,9 @@ async function setup() {
     };
     
     // const onGainChange = (e) => device.parametersById.get(e.currentTarget.name).normalizedValue = parseFloat(e.currentTarget.value);
-    const onGainChange = (e) => device.parametersById.get(e.currentTarget.name) = parseFloat(e.currentTarget.value);
     
     document.querySelector("#start").onclick = run;
-    document.querySelector("#gain").onchange = onGainChange;
+    // document.querySelector("#gain").onchange = onGainChange;
 
     // (Optional) Load the samples
     if (dependencies.length)
