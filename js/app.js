@@ -120,7 +120,7 @@ async function setup() {
     makeMIDIKeyboard(device);
 
     document.body.onclick = () => {
-        context.resume();
+        ctx.resume();
     }
 
     // Skip if you're not using guardrails.js
