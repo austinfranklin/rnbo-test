@@ -2,12 +2,12 @@ async function setup() {
     const patchExportURL = "export/patch.export.json";
 
     // Create AudioContext
-    const WAContext = window.AudioContext || window.webkitAudioContext;
-    const context = new WAContext();
+    const ctx = new (window.AudioContext || window.webkitAudioContext);
+    //const context = new ctx();
 
     // Create gain node and connect it to audio output
-    const outputNode = context.createGain();
-    outputNode.connect(context.destination);
+    const outputNode = ctx.createGain();
+    outputNode.connect(ctx.destination);
     
     // Fetch the exported patcher
     let response, patcher;
@@ -54,7 +54,7 @@ async function setup() {
     // Create the device
     let device;
     try {
-        device = await RNBO.createDevice({ context, patcher });
+        device = await RNBO.createDevice({ context: ctx, patcher });
     } catch (err) {
         if (typeof guardrails === "function") {
             guardrails({ error: err });
@@ -63,6 +63,36 @@ async function setup() {
         }
         return;
     }
+
+    let setup = false;
+    
+    const run = async () => {
+      if (setup) return;
+      setup = true;
+      ctx.resume();
+  
+      try {
+        // Access user's microphone
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+        
+        // Create Media Stream source
+        const source = ctx.createMediaStreamSource(stream);
+        
+        // Connect source to RNBO Device
+        source.connect(device.node);
+        
+        // Connect RNBO Device to destination output
+        device.node.connect(ctx.destination);
+        
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    
+    const onGainChange = (e) => device.parametersById.get(e.currentTarget.name).normalizedValue = parseFloat(e.currentTarget.value);
+    
+    document.querySelector("#start").onclick = run;
+    document.querySelector("#gain").onchange = onGainChange;
 
     // (Optional) Load the samples
     if (dependencies.length)
@@ -291,7 +321,7 @@ function makeMIDIKeyboard(device) {
 
     mdiv.removeChild(document.getElementById("no-midi-label"));
 
-    const midiNotes = [48, 50, 52, 55, 57, 60, 62, 64, 67 ,69];
+    const midiNotes = [49, 52, 56, 63];
     midiNotes.forEach(note => {
         const key = document.createElement("div");
         const label = document.createElement("p");
