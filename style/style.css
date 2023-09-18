@@ -10,6 +10,8 @@ html, body {
 
     background: #434d5a;
     font-family: "Roboto";
+    color: white;
+    text-shadow: 2px 2px tomato;
 }
 #rnbo-root {
     height: 100vh;
@@ -29,11 +31,6 @@ h2, em {
     max-width: 540px;
 }
 
-#rnbo-clickable-keyboard > div.clicked {
-    background: #222222;
-    color: #dddddd;
-}
-
 #rnbo-parameter-sliders {
     display: flex;
     flex-direction: column;
@@ -45,4 +42,41 @@ h2, em {
 
 #rnbo-parameter-sliders > div > input:first-of-type {
     flex-grow: 1;
+}
+
+/* styling for slider visualization */
+
+.param-slider {
+    -webkit-appearance: none;
+}
+   
+.param-slider:focus {
+    outline: none;
+}
+
+.param-slider::-webkit-slider-runnable-track {
+    background: tomato;
+    height: 10px;
+}
+   
+.param-slider::-moz-range-track {
+    background: tomato;
+    height: 10px;
+}
+
+.param-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    background: pink;
+    margin-top: -2.5px;
+    border-radius: 10%;
+}
+   
+.param-slider::-moz-range-thumb {
+    height: 15px;
+    width: 15px;
+    background: pink;
+    margin-top: -2.5px;
+    border-radius: 10%;
 }
