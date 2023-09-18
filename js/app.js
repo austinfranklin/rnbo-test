@@ -177,8 +177,8 @@ function makeSliders(device) {
         label.textContent = `${param.name}: `;
 
         // Make each slider reflect its parameter
-        slider.setAttribute("type", "checkbox"); // range for slider
-        slider.setAttribute("class", "slider round"); // param-slider
+        slider.setAttribute("type", "range");
+        slider.setAttribute("class", "param-slider");
         slider.setAttribute("id", param.id);
         slider.setAttribute("name", param.name);
         slider.setAttribute("min", param.min);
