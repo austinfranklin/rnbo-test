@@ -232,44 +232,44 @@ function makeSliders(device) {
     });
 }
 
-function makeInportForm(device) {
-    const idiv = document.getElementById("rnbo-inports");
-    const inportSelect = document.getElementById("inport-select");
-    const inportText = document.getElementById("inport-text");
-    const inportForm = document.getElementById("inport-form");
-    let inportTag = null;
+// function makeInportForm(device) {
+//     const idiv = document.getElementById("rnbo-inports");
+//     const inportSelect = document.getElementById("inport-select");
+//     const inportText = document.getElementById("inport-text");
+//     const inportForm = document.getElementById("inport-form");
+//     let inportTag = null;
     
-    // Device messages correspond to inlets/outlets or inports/outports
-    // You can filter for one or the other using the "type" of the message
-    const messages = device.messages;
-    const inports = messages.filter(message => message.type === RNBO.MessagePortType.Inport);
+//     // Device messages correspond to inlets/outlets or inports/outports
+//     // You can filter for one or the other using the "type" of the message
+//     const messages = device.messages;
+//     const inports = messages.filter(message => message.type === RNBO.MessagePortType.Inport);
 
-    if (inports.length === 0) {
-        idiv.removeChild(document.getElementById("inport-form"));
-        return;
-    } else {
-        idiv.removeChild(document.getElementById("no-inports-label"));
-        inports.forEach(inport => {
-            const option = document.createElement("option");
-            option.innerText = inport.tag;
-            inportSelect.appendChild(option);
-        });
-        inportSelect.onchange = () => inportTag = inportSelect.value;
-        inportTag = inportSelect.value;
+//     if (inports.length === 0) {
+//         idiv.removeChild(document.getElementById("inport-form"));
+//         return;
+//     } else {
+//         idiv.removeChild(document.getElementById("no-inports-label"));
+//         inports.forEach(inport => {
+//             const option = document.createElement("option");
+//             option.innerText = inport.tag;
+//             inportSelect.appendChild(option);
+//         });
+//         inportSelect.onchange = () => inportTag = inportSelect.value;
+//         inportTag = inportSelect.value;
 
-        inportForm.onsubmit = (ev) => {
-            // Do this or else the page will reload
-            ev.preventDefault();
+//         inportForm.onsubmit = (ev) => {
+//             // Do this or else the page will reload
+//             ev.preventDefault();
 
-            // Turn the text into a list of numbers (RNBO messages must be numbers, not text)
-            const values = inportText.value.split(/\s+/).map(s => parseFloat(s));
+//             // Turn the text into a list of numbers (RNBO messages must be numbers, not text)
+//             const values = inportText.value.split(/\s+/).map(s => parseFloat(s));
             
-            // Send the message event to the RNBO device
-            let messageEvent = new RNBO.MessageEvent(RNBO.TimeNow, inportTag, values);
-            device.scheduleEvent(messageEvent);
-        }
-    }
-}
+//             // Send the message event to the RNBO device
+//             let messageEvent = new RNBO.MessageEvent(RNBO.TimeNow, inportTag, values);
+//             device.scheduleEvent(messageEvent);
+//         }
+//     }
+// }
 
 function attachOutports(device) {
     const outports = device.outports;
