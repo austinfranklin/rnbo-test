@@ -294,6 +294,9 @@ function attachOutports(device) {
         console.log(`${ev.tag}: ${ev.payload}`);
 
         document.getElementById("rnbo-console-readout").innerText = `${ev.tag}: ${ev.payload}`;
+        
+        let value = document.getElementById(ev.tag);
+        value.setAttribute("value", ev.payload);
     });
 }
 
