@@ -293,10 +293,22 @@ function attachOutports(device) {
         // Message events have a tag as well as a payload
         console.log(`${ev.tag}: ${ev.payload}`);
 
-        document.getElementById("rnbo-console-readout").innerText = `${ev.tag}: ${ev.payload}`;
-        
-        let value = document.getElementById(ev.tag);
-        value.setAttribute("value", ev.payload);
+        //document.getElementById("rnbo-console-readout").innerText = `${ev.tag}: ${ev.payload}`;
+        // added new stuff lines 298 and 299
+
+        if (ev.tag == "out3") {
+            let value = document.getElementById("wind");
+            value.setAttribute("value", ev.payload);
+        } else if (ev.tag == "out4") {
+            let value = document.getElementById("crowds");
+            value.setAttribute("value", ev.payload);
+        } else if (ev.tag == "out5") {
+            let value = document.getElementById("leaves");
+            value.setAttribute("value", ev.payload);
+        } else if (ev.tag == "out6") {
+            let value = document.getElementById("cars");
+            value.setAttribute("value", ev.payload);
+        }
     });
 }
 
