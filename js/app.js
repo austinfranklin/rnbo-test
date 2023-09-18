@@ -108,7 +108,7 @@ async function setup() {
     makeSliders(device);
 
     // (Optional) Create a form to send messages to RNBO inputs
-    makeInportForm(device);
+    //makeInportForm(device);
 
     // (Optional) Attach listeners to outports so you can log messages from the RNBO patcher
     attachOutports(device);
