@@ -291,7 +291,7 @@ function attachOutports(device) {
 
         if (ev.tag == "out3") {
             let value = document.getElementById("wind");
-            value.setAttribute("value", ev.payload);
+            value.setAttribute("value", ev.payload);            
         } else if (ev.tag == "out4") {
             let value = document.getElementById("crowds");
             value.setAttribute("value", ev.payload);
