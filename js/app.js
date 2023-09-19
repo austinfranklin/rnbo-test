@@ -162,7 +162,7 @@ function makeSliders(device) {
         let sliderContainer = document.createElement("div");
         sliderContainer.appendChild(label);
         sliderContainer.appendChild(slider);
-        sliderContainer.appendChild(text);
+        //sliderContainer.appendChild(text);
 
         // Add a name for the label
         label.setAttribute("name", param.name);
@@ -185,8 +185,8 @@ function makeSliders(device) {
         slider.setAttribute("value", param.value);
 
         // Make a settable text input display for the value
-        text.setAttribute("value", param.value.toFixed(1));
-        text.setAttribute("type", "text");
+        // text.setAttribute("value", param.value.toFixed(1));
+        // text.setAttribute("type", "text");
 
         // Make each slider control its parameter
         slider.addEventListener("pointerdown", () => {
@@ -300,6 +300,9 @@ function attachOutports(device) {
             value.setAttribute("value", ev.payload);
         } else if (ev.tag == "out6") {
             let value = document.getElementById("cars");
+            value.setAttribute("value", ev.payload);
+        } else if (ev.tag == "out7") {
+            let value = document.getElementById("birds");
             value.setAttribute("value", ev.payload);
         }
     });
