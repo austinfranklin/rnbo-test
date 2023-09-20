@@ -293,10 +293,10 @@ function attachOutports(device) {
             let value = document.getElementById("wind");
             value.setAttribute("value", ev.payload);            
         } else if (ev.tag == "out4") {
-            let value = document.getElementById("crowds");
+            let value = document.getElementById("leaves");
             value.setAttribute("value", ev.payload);
         } else if (ev.tag == "out5") {
-            let value = document.getElementById("leaves");
+            let value = document.getElementById("crowds");
             value.setAttribute("value", ev.payload);
         } else if (ev.tag == "out6") {
             let value = document.getElementById("cars");
