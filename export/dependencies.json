@@ -8,11 +8,15 @@
     "file": "media/leaves.wav"
   },
   {
-    "id": "crowd",
-    "file": "media/crowd.wav"
+    "id": "loop1",
+    "file": "media/loop1.wav"
   },
   {
     "id": "birds",
     "file": "media/birds.wav"
+  },
+  {
+    "id": "crowd",
+    "file": "media/crowd.wav"
   }
 ]
