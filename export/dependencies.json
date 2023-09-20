@@ -1,22 +1,6 @@
 [
   {
-    "id": "wind",
-    "file": "media/wind.wav"
-  },
-  {
-    "id": "leaves",
-    "file": "media/leaves.wav"
-  },
-  {
-    "id": "loop1",
-    "file": "media/loop1.wav"
-  },
-  {
-    "id": "birds",
-    "file": "media/birds.wav"
-  },
-  {
-    "id": "crowd",
-    "file": "media/crowd.wav"
+    "id": "sine",
+    "file": "media/sine1.wav"
   }
 ]
